@@ -16,7 +16,7 @@ public final class Autos {
     return Commands.sequence(subsystem.exampleMethodCommand(), new ExampleCommand(subsystem));
   }
 
-  public static Command RotateSpeed(DrivetrainSubsystem dsub) {
+  public static Command SpinRPMAuto(DrivetrainSubsystem dsub) {
       return Commands.sequence(new SpinRPMCommand(Constants.DrivetrainConstants.kTargetRPM, dsub));
     }
 
