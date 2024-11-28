@@ -15,5 +15,12 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+    
+  }
+  public static class DrivetrainConstants{
+    public static final int kEncoderCountPerRev = 1024;
+    public static final double kTargetRPM = 100;
+    public static final int kEncoderPortA = 0;
+    public static final int kEncoderPortB = 1;
   }
 }

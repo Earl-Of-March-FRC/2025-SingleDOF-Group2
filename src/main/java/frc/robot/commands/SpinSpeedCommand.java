@@ -9,12 +9,12 @@ import frc.robot.subsystems.DrivetrainSubsystem;
 import java.util.function.Supplier;
 
 
-public class drivecmd extends Command {
+public class SpinSpeedCommand extends Command {
   /** Creates a new drive. */
   private DrivetrainSubsystem dsub;
   private Supplier<Double> speed;
 
-  public drivecmd(DrivetrainSubsystem dsub, Supplier<Double> speed) {
+  public SpinSpeedCommand(DrivetrainSubsystem dsub, Supplier<Double> speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.dsub = dsub;
     this.speed = speed;
