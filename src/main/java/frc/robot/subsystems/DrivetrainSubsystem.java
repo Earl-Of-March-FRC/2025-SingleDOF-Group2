@@ -10,33 +10,42 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class DrivetrainSubsystem extends SubsystemBase {
   /** Creates a new DrivetrainSubsystem. */
 
   private final WPI_TalonSRX motor = new WPI_TalonSRX(6);
-  //private final Encoder encoder = new Encoder(Constants.DrivetrainConstants.kEncoderPortA,Constants.DrivetrainConstants.kEncoderPortB);
-  public DrivetrainSubsystem() {}
+  
+  public DrivetrainSubsystem() {
+    motor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+    motor.setSensorPhase(true);
+    motor.config_kP(Constants.DrivetrainConstants.kEncoderIdxPID, Constants.DrivetrainConstants.kEncoderPPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
+    motor.config_kI(Constants.DrivetrainConstants.kEncoderIdxPID,Constants.DrivetrainConstants.kEncoderIPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
+    motor.config_kD(Constants.DrivetrainConstants.kEncoderIdxPID, Constants.DrivetrainConstants.kEncoderDPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
+  }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    double currentVelocity = motor.getSelectedSensorVelocity();
+    double currentRPM = currentVelocity*600/Constants.DrivetrainConstants.kEncoderCountPerRev;
+    SmartDashboard.putNumber("Current RPM", currentRPM);
   }
 
   public void setSpeed(double speed){
-    motor.set(speed);
+    motor.set(ControlMode.PercentOutput, speed);
     
   }
 
   public void setRPM(double targetRPM){
+
     double targetVelocity_UnitsPer100ms = (targetRPM / 600) * Constants.DrivetrainConstants.kEncoderCountPerRev;
 
     motor.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
         
-    double currentVelocity = motor.getSelectedSensorVelocity();
-    double currentRPM = currentVelocity*600/Constants.DrivetrainConstants.kEncoderCountPerRev;
-    SmartDashboard.putNumber("Current RPM", currentRPM);
+   
   }
 
 }

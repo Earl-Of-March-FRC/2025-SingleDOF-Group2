@@ -18,9 +18,14 @@ public final class Constants {
     
   }
   public static class DrivetrainConstants{
-    public static final int kEncoderCountPerRev = 1024;
+    public static final int kEncoderCountPerRev = 4096;
     public static final double kTargetRPM = 100;
     public static final int kEncoderPortA = 0;
     public static final int kEncoderPortB = 1;
+    public static final int kEncoderIdxPID = 0;
+    public static final double kEncoderPPID = 0.1;
+    public static final double kEncoderIPID = 0.1;
+    public static final double kEncoderDPID = 0.1;
+    public static final int kEncoderTimeoutPIDMs = 10;
   }
 }
