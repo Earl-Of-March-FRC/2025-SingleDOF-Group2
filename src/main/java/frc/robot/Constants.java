@@ -24,8 +24,8 @@ public final class Constants {
     public static final int kEncoderPortB = 1;
     public static final int kEncoderIdxPID = 0;
     public static final double kEncoderPPID = 0.1;
-    public static final double kEncoderIPID = 0.1;
-    public static final double kEncoderDPID = 0.1;
+    public static final double kEncoderIPID = 0;
+    public static final double kEncoderDPID = 0;
     public static final int kEncoderTimeoutPIDMs = 10;
   }
 }

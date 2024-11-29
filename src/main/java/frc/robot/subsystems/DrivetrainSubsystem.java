@@ -19,7 +19,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
   private final WPI_TalonSRX motor = new WPI_TalonSRX(6);
   
   public DrivetrainSubsystem() {
-    motor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+    motor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, Constants.DrivetrainConstants.kEncoderIdxPID, Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
     motor.setSensorPhase(true);
     motor.config_kP(Constants.DrivetrainConstants.kEncoderIdxPID, Constants.DrivetrainConstants.kEncoderPPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
     motor.config_kI(Constants.DrivetrainConstants.kEncoderIdxPID,Constants.DrivetrainConstants.kEncoderIPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
