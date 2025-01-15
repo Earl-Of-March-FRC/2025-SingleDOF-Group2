@@ -22,8 +22,9 @@ public class DrivetrainSubsystem extends SubsystemBase {
     motor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, Constants.DrivetrainConstants.kEncoderIdxPID, Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
     motor.setSensorPhase(true);
     motor.config_kP(Constants.DrivetrainConstants.kEncoderIdxPID, Constants.DrivetrainConstants.kEncoderPPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
-    motor.config_kI(Constants.DrivetrainConstants.kEncoderIdxPID,Constants.DrivetrainConstants.kEncoderIPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
+    motor.config_kI(Constants.DrivetrainConstants.kEncoderIdxPID, Constants.DrivetrainConstants.kEncoderIPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
     motor.config_kD(Constants.DrivetrainConstants.kEncoderIdxPID, Constants.DrivetrainConstants.kEncoderDPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
+    motor.config_kF(Constants.DrivetrainConstants.kEncoderIdxPID, Constants.DrivetrainConstants.kEncoderFPID,Constants.DrivetrainConstants.kEncoderTimeoutPIDMs);
   }
 
   @Override
